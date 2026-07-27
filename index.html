@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Relatórios de Campo</title>
+    
+    <!-- Bibliotecas via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --surface-color: #ffffff;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --accent-color: #0d6efd;
+            --border-color: #dee2e6;
+            --safe-area-top: env(safe-area-inset-top, 0px);
+            --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --surface-color: #1e1e1e;
+                --text-primary: #f8f9fa;
+                --text-secondary: #adb5bd;
+                --accent-color: #3d8bfd;
+                --border-color: #2d2d2d;
+            }
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; overscroll-behavior-y: none; -webkit-user-select: none; user-select: none; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-primary); padding-top: var(--safe-area-top); padding-bottom: var(--safe-area-bottom); display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        header { background-color: var(--surface-color); padding: 16px; border-bottom: 1px solid var(--border-color); font-weight: bold; text-align: center; font-size: 1.1rem; }
+        main { flex: 1; overflow-y: auto; padding: 16px; }
+        .card { background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .card h3 { font-size: 1rem; margin-bottom: 6px; }
+        .card p { font-size: 0.85rem; color: var(--text-secondary); }
+        .fab-container { padding: 16px; background-color: var(--surface-color); border-top: 1px solid var(--border-color); display: flex; gap: 12px; }
+        .btn { flex: 1; background-color: var(--accent-color); color: #fff; border: none; border-radius: 8px; padding: 14px; font-weight: 600; text-align: center; cursor: pointer; font-size: 1rem; }
+    </style>
+</head>
+<body>
+
+    <header>Relatórios de Campo</header>
+
+    <main>
+        <div class="card">
+            <h3>Trecho Rodovia BR-101 (km 42)</h3>
+            <p>Pavimentação de Camada Asfáltica - Lote 02</p>
+            <p style="margin-top: 8px; font-size: 0.8rem; color: var(--accent-color);">● Status: Pronto para exportação</p>
+        </div>
+    </main>
+
+    <div class="fab-container">
+        <button class="btn" onclick="acionarPainelSalvamento()">💾 Gerar Pacote (PDF + Excel + KML)</button>
+    </div>
+
+    <!-- Importação dos módulos separados -->
+    <script src="engine.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
